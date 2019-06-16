@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+const int CHARS=26;
+// Complete the makeAnagram function below.
+int makeAnagram(string str1, string str2) {
+    
+    int count1[CHARS]={0},count2[CHARS]={0};
+
+    for(int i=0;str1[i]!='\0';i++)
+    count1[str1[i]-'a']++;
+
+    for(int i=0;str2[i]!='\0';i++)
+    count2[str2[i]-'a']++;
+
+    int result=0;
+    for(int i=0;i<26;i++)
+       result+=abs(count1[i]-count2[i]);
+    return result;   
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string a;
+    getline(cin, a);
+
+    string b;
+    getline(cin, b);
+
+    int res = makeAnagram(a, b);
+
+    fout << res << "\n";
+
+    fout.close();
+
+    return 0;
+}
